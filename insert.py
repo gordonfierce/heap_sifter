@@ -1,6 +1,8 @@
 # coding: utf-8
 import random, heapq, functools
 
+import click
+
 def insert_todo(todos, text):
     heapq.heappush(todos, TODO(text))
 
@@ -16,9 +18,12 @@ def write_todos(todo_list, file_name):
             print(item.text, file=file)
             
 def read_todos(todo_file):
-    with open(todo_file) as file:
-        todos = [TODO(todo.strip()) for todo in  file if todo != '\n']
-    return todos
+    try: 
+        with open(todo_file) as file:
+            todos = [TODO(todo.strip()) for todo in  file if todo != '\n']
+        return todos
+    except FileNotFoundError:
+        return []
 
 @functools.lru_cache(maxsize=None)
 def prioritize_or_equal(item_a, item_b):
@@ -55,8 +60,16 @@ class TODO:
         else:
             return prioritize_or_equal(other.text, self.text) == 'less'
 
-todos = read_todos('todo.txt')
-text = input()
-insert_todo(todos, text)
-write_todos(todos, 'todo.txt')
 
+@click.command()
+@click.option('--insertion', prompt='Your todo:',
+              help='The string you want to add.')
+@click.option('--todo_file', default='todo.txt',
+              help='The text file destination.')
+def add_todo(todo_file, insertion):
+    todos = read_todos(todo_file)
+    insert_todo(todos, insertion)
+    write_todos(todos, todo_file)
+
+if __name__ == '__main__':
+    add_todo()
