@@ -9,6 +9,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        heap_sifter=heap_sifter:cli
+        heap_sifter=insert:add_todo
     ''',
 )
