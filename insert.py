@@ -13,9 +13,9 @@ def review(todos):
     item.text = review
     
 def write_todos(todo_list, file_name):
-    with open(file_name, mode='w') as file:
+    with open(file_name, mode='w') as my_file:
         for item in todo_list:
-            print(item.text, file=file)
+            print(item.text, my_file=my_file)
             
 def read_todos(todo_file):
     try: 
