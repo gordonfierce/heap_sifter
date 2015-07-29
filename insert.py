@@ -29,7 +29,7 @@ def read_todos(todo_file):
 def prioritize_or_equal(item_a, item_b):
     click.echo("a: {}".format(item_a))
     click.echo("b: {}".format(item_b))
-    choice = click.prompt("More important? a/b/(e)qual: ")
+    choice = click.prompt("More important? a/b/(e)qual")
     if choice == 'b':
         return 'less'
     elif choice == 'a':
@@ -62,7 +62,7 @@ class TODO:
 
 
 @click.command()
-@click.option('--insertion', prompt='Your todo:',
+@click.option('--insertion', prompt='Your todo',
               help='The string you want to add.')
 @click.option('--todo_file', default='todo.txt',
               help='The text file destination.')
