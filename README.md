@@ -1,4 +1,4 @@
-# heap_sifter
+# heapsifter
 My own CLI tool for managing things I'll get around to. Opinionated and experimental.
 
 ## Philosophy
