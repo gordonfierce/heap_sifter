@@ -8,7 +8,7 @@ def insert_todo(todos, text):
 
 def review(todos):
     item = random.choice(todos)
-    print(item.text)
+    click.echo(item.text)
     review = input()
     item.text = review
 
@@ -27,9 +27,8 @@ def read_todos(todo_file):
 
 @functools.lru_cache(maxsize=None)
 def prioritize_or_equal(item_a, item_b):
-    print("a: {}".format(item_a))
-    print("b: {}".format(item_b))
-    choice = input("More important? a/b/(e)qual: ")
+    click.echo("a: {}".format(item_a))
+    click.echo("b: {}".format(item_b))
     choice = click.prompt("More important? a/b/(e)qual: ")
     if choice == 'b':
         return 'less'
