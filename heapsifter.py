@@ -75,7 +75,7 @@ def add_todo(todo_file, insertion):
     write_todos(todos, todo_file)
 
 @cli.command()
-@click.option('--file', default='todo.txt',
+@click.option('--todo_file', default='todo.txt',
               help='The file to heap.')
 def heap_it(todo_file):
     todos = read_todos(todo_file)
@@ -84,4 +84,4 @@ def heap_it(todo_file):
 
 
 if __name__ == '__main__':
-    add_todo()
+    cli()
