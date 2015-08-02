@@ -92,8 +92,9 @@ def pop(todo_file):
     if choice == 'd':
         heapq.heappop(todos)
     elif choice == 'r':
-        item = heapq.heappop(todos)
-        heapq.heappush(todos, item)
+        heapq.heapreplace(todos, todos[0])
+        # item = heapq.heappop(todos)
+        # heapq.heappush(todos, item)
     write_todos(todos, todo_file)
 
 
