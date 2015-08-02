@@ -60,8 +60,11 @@ class TODO:
         else:
             return prioritize_or_equal(other.text, self.text) == 'less'
 
+@click.group()
+def cli():
+    pass
 
-@click.command()
+@cli.command()
 @click.option('--insertion', prompt='Your todo',
               help='The string you want to add.')
 @click.option('--todo_file', default='todo.txt',
@@ -71,13 +74,14 @@ def add_todo(todo_file, insertion):
     insert_todo(todos, insertion)
     write_todos(todos, todo_file)
 
-@click.command()
+@cli.command()
 @click.option('--file', default='todo.txt',
               help='The file to heap.')
 def heap_it(todo_file):
     todos = read_todos(todo_file)
     heapq.heapify(todos)
     write_todos(todos, todo_file)
+
 
 if __name__ == '__main__':
     add_todo()
