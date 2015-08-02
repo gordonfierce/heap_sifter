@@ -82,6 +82,20 @@ def heap_it(todo_file):
     heapq.heapify(todos)
     write_todos(todos, todo_file)
 
+@cli.command()
+@click.option('--todo_file', default='todo.txt',
+              help='The todo file to review.')
+def pop(todo_file):
+    todos = read_todos(todo_file)
+    click.echo(todos[0])
+    choice = click.prompt("Mark [d]one, [r]epush, or [C]urrent?")
+    if choice == 'd':
+        heapq.heappop(todos)
+    elif choice == 'r':
+        item = heapq.heappop(todos)
+        heapq.heappush(todos, item)
+    write_todos(todos, todo_file)
+
 
 if __name__ == '__main__':
     cli()
