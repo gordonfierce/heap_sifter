@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='heap_sifter',
+    name='heapsifter',
     version='0.1',
-    py_modules=['heap_sifter'],
+    py_modules=['heapsifter'],
     install_requires=[
         'Click',
     ],
