@@ -69,7 +69,7 @@ def cli():
               help='The string you want to add.')
 @click.option('--todo_file', default='todo.txt',
               help='The text file destination.')
-def add_todo(todo_file, insertion):
+def add(todo_file, insertion):
     todos = read_todos(todo_file)
     insert_todo(todos, insertion)
     write_todos(todos, todo_file)
