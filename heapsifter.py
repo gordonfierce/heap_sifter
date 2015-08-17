@@ -87,6 +87,9 @@ def heap_it(todo_file):
               help='The todo file to review.')
 def pop(todo_file):
     todos = read_todos(todo_file)
+    if len(todos) == 0:
+        click.echo("No todos!")
+        return 0 
     click.echo(todos[0])
     choice = click.prompt("Mark [d]one, [r]epush, or [C]urrent?")
     if choice == 'd':
@@ -97,6 +100,9 @@ def pop(todo_file):
         # heapq.heappush(todos, item)
     write_todos(todos, todo_file)
 
+@cli.command()
+def grab(source_file, dest_file):
+    pass
 
 if __name__ == '__main__':
     cli()
