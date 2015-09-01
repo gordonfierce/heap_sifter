@@ -104,5 +104,38 @@ def pop(todo_file):
 def grab(source_file, dest_file):
     pass
 
+def multi_delete(todo_list, indexes):
+    """Remove the items specified by the indexes in a heap-preserving way."""
+    for index in indexes:
+        todo_list[index] = todo_list[-1]
+        todo_list.pop()
+    list_len = len(todo_list)
+    for index in indexes:
+        if index < list_len:
+            heapq._siftup(todo_list, index)
+    return todo_list
+
+@cli.command()
+@click.option('--todo_file', default='todo.txt',
+              help='The todo file to review.')
+def batch_remove(todo_file):
+    todos = read_todos(todo_file)
+    click.echo("Todos:")
+    for item_tuple in enumerate(todos):
+        click.echo("{}) {}".format(*item_tuple))
+    target_list = []
+    while True:
+        resp = click.prompt("(q)uit or #")
+        if resp == 'q':
+            break
+        else:
+            try:
+                target = int(resp)
+                target_list.append(target)
+            except TypeError:
+                pass
+    new_list = multi_delete(todos, target_list)
+    write_todos(new_list, todo_file)
+
 if __name__ == '__main__':
     cli()
