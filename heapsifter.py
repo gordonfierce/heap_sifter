@@ -106,6 +106,7 @@ def grab(source_file, dest_file):
 
 def multi_delete(todo_list, indexes):
     """Remove the items specified by the indexes in a heap-preserving way."""
+    indexes = reversed(sorted(indexes))
     for index in indexes:
         todo_list[index] = todo_list[-1]
         todo_list.pop()
