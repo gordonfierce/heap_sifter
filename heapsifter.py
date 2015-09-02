@@ -65,7 +65,7 @@ def cli():
     pass
 
 @cli.command()
-@click.option('--insertion', prompt='Your todo',
+@click.option('-i', '--insertion', prompt='Your todo',
               help='The string you want to add.')
 @click.option('--todo_file', default='todo.txt',
               help='The text file destination.')
