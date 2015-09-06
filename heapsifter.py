@@ -107,20 +107,13 @@ def grab(source_file, dest_file):
 def multi_delete(todo_list, indexes):
     """Remove the items specified by the indexes in a heap-preserving way."""
     indexes = list(reversed(sorted(indexes)))
-    click.echo(indexes)
     for index in indexes:
         click.echo(index)
         todo_list[index] = todo_list[-1]
         todo_list.pop()
     list_len = len(todo_list)
-    click.echo(todo_list)
-    click.echo(indexes)
     for index in indexes:
-        click.echo(list_len)
-        click.echo(index)
         if index < list_len:
-            click.echo("Inside the black box!")
-            click.echo(todo_list[index])
             heapq._siftup(todo_list, index)
     return todo_list
 
