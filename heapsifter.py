@@ -76,7 +76,7 @@ def add(todo_file, insertion):
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
-              help='The file to heap.')
+              type=click.File('r'), help='The file to heap.')
 def heap_it(todo_file):
     todos = read_todos(todo_file)
     heapq.heapify(todos)
@@ -89,7 +89,7 @@ def pop(todo_file):
     todos = read_todos(todo_file)
     if len(todos) == 0:
         click.echo("No todos!")
-        return 0 
+        return 0
     click.echo(todos[0])
     choice = click.prompt("Mark [d]one, [r]epush, or [C]urrent?")
     if choice == 'd':
@@ -106,13 +106,21 @@ def grab(source_file, dest_file):
 
 def multi_delete(todo_list, indexes):
     """Remove the items specified by the indexes in a heap-preserving way."""
-    indexes = reversed(sorted(indexes))
+    indexes = list(reversed(sorted(indexes)))
+    click.echo(indexes)
     for index in indexes:
+        click.echo(index)
         todo_list[index] = todo_list[-1]
         todo_list.pop()
     list_len = len(todo_list)
+    click.echo(todo_list)
+    click.echo(indexes)
     for index in indexes:
+        click.echo(list_len)
+        click.echo(index)
         if index < list_len:
+            click.echo("Inside the black box!")
+            click.echo(todo_list[index])
             heapq._siftup(todo_list, index)
     return todo_list
 
@@ -135,6 +143,7 @@ def batch_remove(todo_file):
                 target_list.append(target)
             except TypeError:
                 pass
+    print("calling multi_delete")
     new_list = multi_delete(todos, target_list)
     write_todos(new_list, todo_file)
 
