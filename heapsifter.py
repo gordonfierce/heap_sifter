@@ -108,7 +108,6 @@ def multi_delete(todo_list, indexes):
     """Remove the items specified by the indexes in a heap-preserving way."""
     indexes = list(reversed(sorted(indexes)))
     for index in indexes:
-        click.echo(index)
         todo_list[index] = todo_list[-1]
         todo_list.pop()
     list_len = len(todo_list)
@@ -136,7 +135,6 @@ def batch_remove(todo_file):
                 target_list.append(target)
             except TypeError:
                 pass
-    print("calling multi_delete")
     new_list = multi_delete(todos, target_list)
     write_todos(new_list, todo_file)
 
