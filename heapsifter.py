@@ -25,6 +25,13 @@ def read_todos(todo_file):
     except FileNotFoundError:
         return []
 
+def alt_read_todos(todo_file):
+    return [TODO(todo.strip()) for todo in todo_file if todo != '\n']
+    
+def alt_write_todos(todo_file, todo_list):
+    [print(item.text, file=todo_file) for item in todo_list]
+
+
 @functools.lru_cache(maxsize=None)
 def prioritize_or_equal(item_a, item_b):
     click.echo("a: {}".format(item_a))
@@ -68,15 +75,16 @@ def cli():
 @click.option('-i', '--insertion', prompt='Your todo',
               help='The string you want to add.')
 @click.option('--todo_file', default='todo.txt',
-              help='The text file destination.')
+              help='The text file destination.',
+              type=click.File('r+'))
 def add(todo_file, insertion):
-    todos = read_todos(todo_file)
+    todos = alt_read_todos(todo_file)
     insert_todo(todos, insertion)
-    write_todos(todos, todo_file)
+    alt_write_todos(todo_file, todos)
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
-              type=click.File('r'), help='The file to heap.')
+              help='The file to heap.')
 def heap_it(todo_file):
     todos = read_todos(todo_file)
     heapq.heapify(todos)
