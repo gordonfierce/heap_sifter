@@ -84,11 +84,12 @@ def add(todo_file, insertion):
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
-              help='The file to heap.')
+              help='The file to heap.',
+              type=click.File('r+'))
 def heap_it(todo_file):
-    todos = read_todos(todo_file)
+    todos = alt_read_todos(todo_file)
     heapq.heapify(todos)
-    write_todos(todos, todo_file)
+    alt_write_todos(todo_file, todos)
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
