@@ -93,9 +93,10 @@ def heap_it(todo_file):
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
-              help='The todo file to review.')
+              help='The todo file to review.',
+              type=click.File('r+'))
 def pop(todo_file):
-    todos = read_todos(todo_file)
+    todos = alt_read_todos(todo_file)
     if len(todos) == 0:
         click.echo("No todos!")
         return 0
@@ -107,7 +108,7 @@ def pop(todo_file):
         heapq.heapreplace(todos, todos[0])
         # item = heapq.heappop(todos)
         # heapq.heappush(todos, item)
-    write_todos(todos, todo_file)
+    alt_write_todos(todo_file, todos)
 
 @cli.command()
 def grab(source_file, dest_file):
