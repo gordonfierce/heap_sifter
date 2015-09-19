@@ -10,3 +10,9 @@ I want to keep all of the things I need to do, the things I want to do, the thin
 ## The TODO Heap
 
 By putting todo items in a heap, we can make sure that the most important one is at the top, and we can find the next most important one with a minimum of fuss. Sorting your todo list from top to bottom isn't very helpful, because time and effort spent meticulously comparing the least important or urgent things you have to do isn't very well spent.
+
+## Usage
+
+Running the base heapsifter command will show the help for the other commands.
+
+`$ heapsifter` 
