@@ -3,8 +3,10 @@ import random, heapq, functools
 
 import click
 
+
 def insert_todo(todos, text):
     heapq.heappush(todos, TODO(text))
+
 
 def review(todos):
     item = random.choice(todos)
@@ -12,10 +14,12 @@ def review(todos):
     review = input()
     item.text = review
 
+
 def write_todos(todo_list, file_name):
     with open(file_name, mode='w') as my_file:
         for item in todo_list:
             print(item.text, file=my_file)
+
 
 def read_todos(todo_file):
     try:
@@ -27,6 +31,7 @@ def read_todos(todo_file):
 
 def alt_read_todos(todo_file):
     return [TODO(todo.strip()) for todo in todo_file if todo != '\n']
+
     
 def alt_write_todos(todo_file, todo_list):
     [print(item.text, file=todo_file) for item in todo_list]
@@ -43,6 +48,7 @@ def prioritize_or_equal(item_a, item_b):
         return 'greater'
     else:
         return 'equal'
+
 
 @functools.total_ordering
 class TODO:
@@ -67,9 +73,11 @@ class TODO:
         else:
             return prioritize_or_equal(other.text, self.text) == 'less'
 
+
 @click.group()
 def cli():
     pass
+
 
 @cli.command()
 @click.option('-i', '--insertion', prompt='Your todo',
@@ -81,6 +89,7 @@ def add(todo_file, insertion):
     todos = alt_read_todos(todo_file)
     insert_todo(todos, insertion)
     alt_write_todos(todo_file, todos)
+
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
@@ -110,6 +119,7 @@ def pop(todo_file):
         # heapq.heappush(todos, item)
     alt_write_todos(todo_file, todos)
 
+
 @cli.command()
 def grab(source_file, dest_file):
     pass
@@ -125,6 +135,7 @@ def multi_delete(todo_list, indexes):
         if index < list_len:
             heapq._siftup(todo_list, index)
     return todo_list
+
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
