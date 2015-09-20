@@ -29,6 +29,7 @@ def read_todos(todo_file):
     except FileNotFoundError:
         return []
 
+
 def alt_read_todos(todo_file):
     return [TODO(todo.strip()) for todo in todo_file if todo != '\n']
 
@@ -84,28 +85,28 @@ def cli():
               help='The string you want to add.')
 @click.option('--todo_file', default='todo.txt',
               help='The text file destination.',
-              type=click.File('r+'))
+              type=click.Path())
 def add(todo_file, insertion):
-    todos = alt_read_todos(todo_file)
+    todos = read_todos(todo_file)
     insert_todo(todos, insertion)
-    alt_write_todos(todo_file, todos)
+    write_todos(todos, todo_file)
 
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
               help='The file to heap.',
-              type=click.File('r+'))
+              type=click.Path())
 def heap_it(todo_file):
-    todos = alt_read_todos(todo_file)
+    todos = read_todos(todo_file)
     heapq.heapify(todos)
-    alt_write_todos(todo_file, todos)
+    write_todos(todos, todo_file)  
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
               help='The todo file to review.',
-              type=click.File('r+'))
+              type=click.Path())
 def pop(todo_file):
-    todos = alt_read_todos(todo_file)
+    todos = read_todos(todo_file)
     if len(todos) == 0:
         click.echo("No todos!")
         return 0
@@ -117,7 +118,7 @@ def pop(todo_file):
         heapq.heapreplace(todos, todos[0])
         # item = heapq.heappop(todos)
         # heapq.heappush(todos, item)
-    alt_write_todos(todo_file, todos)
+    write_todos(todos, todo_file)
 
 
 @cli.command()
@@ -139,7 +140,8 @@ def multi_delete(todo_list, indexes):
 
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
-              help='The todo file to review.')
+              help='The todo file to review.',
+              type=click.Path())
 def batch_remove(todo_file):
     todos = read_todos(todo_file)
     click.echo("Todos:")
