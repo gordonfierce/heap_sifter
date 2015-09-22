@@ -121,9 +121,6 @@ def pop(todo_file):
     write_todos(todos, todo_file)
 
 
-@cli.command()
-def grab(source_file, dest_file):
-    pass
 
 def multi_delete(todo_list, indexes):
     """Remove the items specified by the indexes in a heap-preserving way."""
@@ -160,6 +157,18 @@ def batch_remove(todo_file):
                 pass
     new_list = multi_delete(todos, target_list)
     write_todos(new_list, todo_file)
+
+
+@cli.command()
+@click.option('--todo_file', default='todo.txt',
+              help='The todo file to review.',
+              type=click.Path())
+@click.option('-n', '--number', default=5,
+              help='Number of todos to show.',
+              type=click.INT)
+def head(todo_file, number):
+    todos = read_todos(todo_file)
+    [click.echo(todos[n]) for n in range(number)]
 
 if __name__ == '__main__':
     cli()
