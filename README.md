@@ -22,3 +22,7 @@ Running the base heapsifter command will show the help for the other commands.
 If you already have a todo.txt file that you haven't converted into a heap, you can do so by invoking
 
 `$ heapsifter heap_it`
+
+If you already have a heaped todo list, then you can add a task to the heap with
+
+`$ heapsifter add`
