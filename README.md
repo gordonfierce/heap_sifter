@@ -26,3 +26,7 @@ If you already have a todo.txt file that you haven't converted into a heap, you 
 If you already have a heaped todo list, then you can add a task to the heap with
 
 `$ heapsifter add`
+
+If you want to see your five most important todo items, run 
+
+`$ heapsifter head`
