@@ -30,3 +30,7 @@ If you already have a heaped todo list, then you can add a task to the heap with
 If you want to see your five most important todo items, run 
 
 `$ heapsifter head`
+
+If you want to remove multiple items from your todo list and maintain the heap invariant, run 
+
+`$ heapsifter batch_remove`
