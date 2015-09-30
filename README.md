@@ -17,8 +17,6 @@ Running the base heapsifter command will show the help for the other commands.
 
 `$ heapsifter` 
 
-### Heaping an unsorted todo.txt
-
 If you already have a todo.txt file that you haven't converted into a heap, you can do so by invoking
 
 `$ heapsifter heap_it`
