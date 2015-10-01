@@ -1,5 +1,18 @@
+from __future__ import print_function
+from __future__ import unicode_literals
+from __future__ import division
+from __future__ import absolute_import
+from builtins import input
+from builtins import open
+from builtins import range
+from builtins import int
+from builtins import object
+from future import standard_library
+standard_library.install_aliases()
 # coding: utf-8
-import random, heapq, functools
+import random 
+import heapq
+import functools
 
 import click
 
@@ -52,7 +65,7 @@ def prioritize_or_equal(item_a, item_b):
 
 
 @functools.total_ordering
-class TODO:
+class TODO(object):
     def __init__(self, text):
         self.text = text
 
