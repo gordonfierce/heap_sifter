@@ -6,6 +6,7 @@ setup(
     py_modules=['heapsifter'],
     install_requires=[
         'Click',
+        'future',
     ],
     entry_points='''
         [console_scripts]
