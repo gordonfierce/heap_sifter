@@ -16,6 +16,9 @@ import functools
 
 import click
 
+def is_heap(passed_list):
+    assert True
+
 
 def insert_todo(todos, text):
     heapq.heappush(todos, TODO(text))
