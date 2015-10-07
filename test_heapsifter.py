@@ -30,3 +30,8 @@ def test_is_heap():
     assert is_heap(heap)
     not_heap = [34, 2, 3, 4, 10]
     assert not is_heap(not_heap)
+
+class dummy_todo():
+    """This class is easily sorted because it always compares
+    in importancy by lexographical order."""
+    pass
