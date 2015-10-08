@@ -5,6 +5,8 @@ My own CLI tool for managing things I'll get around to. Opinionated and experime
 
 There will always be many more things that you want to do than you can do, so you have to prioritize. There will be many more things you'll want to keep track of than you can reliably remember, so you'll want to externalize your memory in a way that you can rely on. 
 
+We don't care if we've successfully prioritized all of our least important tasks relative to one another, so we keep the tasks in a heap.
+
 I want to keep all of the things I need to do, the things I want to do, the things I want to research, and the ideas that I've had safely in text. In order to do so at scale, I need a powertool custom-built for the job. 
 
 ## The TODO Heap
