@@ -1,5 +1,5 @@
 # heapsifter
-My own CLI tool for managing things I'll get around to. Opinionated and experimental.
+A CLI todo list manager. Opinionated and experimental.
 
 ## Philosophy
 
