@@ -2,6 +2,7 @@ import click
 from click.testing import CliRunner
 import heapsifter
 
+from heapsifter import TODO
 from heapsifter import is_heap
 
 def test_empty_pop():
@@ -31,7 +32,7 @@ def test_is_heap():
     not_heap = [34, 2, 3, 4, 10]
     assert not is_heap(not_heap)
 
-class dummy_todo():
+class dummy_todo(TODO):
     """This class is easily sorted because it always compares
     in importancy by lexographical order."""
     pass
