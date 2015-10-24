@@ -7,9 +7,11 @@ setup(
     install_requires=[
         'Click',
         'future',
+        'pbr',
     ],
     entry_points='''
         [console_scripts]
         heapsifter=heapsifter:cli
     ''',
+    pbr=True
 )
