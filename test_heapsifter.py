@@ -1,5 +1,7 @@
 import click
 from click.testing import CliRunner
+from hypothesis import given, example
+from hypothesis.strategies import text
 import heapsifter
 
 from heapsifter import TODO
@@ -32,7 +34,11 @@ def test_is_heap():
     not_heap = [34, 2, 3, 4, 10]
     assert not is_heap(not_heap)
 
+
 class dummy_todo(TODO):
     """This class is easily sorted because it always compares
     in importancy by lexographical order."""
-    pass
+    def __lt__(self, other):
+        return self < other
+    def __eq__(self, other):
+        return self == other

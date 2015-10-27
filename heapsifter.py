@@ -17,7 +17,14 @@ import functools
 import click
 
 def is_heap(passed_list):
-    assert True
+    for index in range(len(passed_list)):
+        if index * 2 + 1 < len(passed_list):
+            if passed_list[index] > passed_list[index * 2 + 1]:
+                return False
+        if index * 2 + 2 < len(passed_list):
+            if passed_list[index] > passed_list[index * 2 + 2]:
+                return False
+    return True
 
 
 def insert_todo(todos, text):
