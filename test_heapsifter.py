@@ -20,6 +20,13 @@ def test_add_todo():
         result = runner.invoke(heapsifter.add, input="Write a test.")
         assert result.exit_code == 0
 
+@given(text())
+def test_add_todo(text_arg):
+    runner = CliRunner()
+    with runner.isolated_filesystem():
+        result = runner.invoke(heapsifter.add, input=text_arg)
+        assert result.exit_code == 0 
+
 def test_add_arg():
     runner = CliRunner()
     with runner.isolated_filesystem():
