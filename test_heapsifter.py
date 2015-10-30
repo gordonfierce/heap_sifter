@@ -33,6 +33,8 @@ def test_is_heap():
     assert is_heap(heap)
     not_heap = [34, 2, 3, 4, 10]
     assert not is_heap(not_heap)
+    sorted_heap = sorted(not_heap)
+    assert is_heap(sorted_heap)
 
 
 class dummy_todo(TODO):
