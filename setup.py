@@ -8,6 +8,7 @@ setup(
         'Click',
         'future',
         'pbr',
+        'hypothesis',
     ],
     entry_points='''
         [console_scripts]
