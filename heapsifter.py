@@ -40,6 +40,7 @@ def review(todos):
 
 
 def write_todos(todo_list, file_name):
+    """Writes a given list of todos to the file with file_name."""
     with open(file_name, mode='w') as my_file:
         for item in todo_list:
             print(item.text, file=my_file)
