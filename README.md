@@ -41,4 +41,6 @@ If you want to view, mark done, or repush your top item, run
 
 ## TODO
 
+Allow for sorting things by time commitment and priority. Add dependencies.
+
 Implement a way to incrementally merge an item at a time from an unsorted list.
