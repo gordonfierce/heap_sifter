@@ -1,3 +1,5 @@
 pbr
 click
 hypothesis
+coverage
+pytest
