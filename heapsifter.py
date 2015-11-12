@@ -1,3 +1,4 @@
+# coding: utf-8
 from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
@@ -9,7 +10,6 @@ from builtins import int
 from builtins import object
 from future import standard_library
 standard_library.install_aliases()
-# coding: utf-8
 import random 
 import heapq
 import functools
@@ -126,6 +126,7 @@ def heap_it(todo_file):
     heapq.heapify(todos)
     write_todos(todos, todo_file)  
 
+
 @cli.command()
 @click.option('--todo_file', default='todo.txt',
               help='The todo file to review.',
@@ -144,7 +145,6 @@ def pop(todo_file):
         # item = heapq.heappop(todos)
         # heapq.heappush(todos, item)
     write_todos(todos, todo_file)
-
 
 
 def multi_delete(todo_list, indexes):
@@ -194,6 +194,15 @@ def batch_remove(todo_file):
 def head(todo_file, number):
     todos = read_todos(todo_file)
     [click.echo(todos[n]) for n in range(number)]
+
+
+@click.command()
+@click.option('--a', type=click.Path())
+@click.option('--b', type=click.Path())
+def combine(a, b):
+    todos_a = read_todos(a)
+    todos_b = read_todos(b)
+
 
 if __name__ == '__main__':
     cli()
