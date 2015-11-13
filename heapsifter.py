@@ -197,11 +197,14 @@ def head(todo_file, number):
 
 
 @click.command()
-@click.option('--a', type=click.Path())
-@click.option('--b', type=click.Path())
-def combine(a, b):
-    todos_a = read_todos(a)
-    todos_b = read_todos(b)
+@click.option('--source', type=click.Path())
+@click.option('--target', type=click.Path())
+def combine(source, target):
+    src = read_todos(source)
+    targ = read_todos(target)
+    for item in src:
+        insert_todo(targ, item)
+    write_todos(src, source)
 
 
 if __name__ == '__main__':
