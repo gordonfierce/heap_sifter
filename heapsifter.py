@@ -33,6 +33,7 @@ def insert_todo(todos, text):
 
 
 def review(todos):
+    """Asks the user to retype a random todo."""
     item = random.choice(todos)
     click.echo(item.text)
     review = input()
