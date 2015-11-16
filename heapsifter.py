@@ -208,5 +208,15 @@ def combine(source, target):
     write_todos(src, source)
 
 
+@click.command()
+def sift_one(source, target):
+    src = read_todos(source)
+    targ = read_todos(target)
+    item = heapmq.pop(src)
+    insert_todo(targ, item)
+    write_todos(src, source)
+    write_todos(targ, target)
+
+
 if __name__ == '__main__':
     cli()
