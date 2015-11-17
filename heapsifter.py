@@ -209,6 +209,8 @@ def combine(source, target):
 
 
 @click.command()
+@click.option('--source', type=click.Path())
+@click.option('--target', type=click.Path())
 def sift_one(source, target):
     src = read_todos(source)
     targ = read_todos(target)
