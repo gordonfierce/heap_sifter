@@ -214,7 +214,7 @@ def combine(source, target):
 def sift_one(source, target):
     src = read_todos(source)
     targ = read_todos(target)
-    item = heapmq.pop(src)
+    item = heapq.heappop(src)
     insert_todo(targ, item)
     write_todos(src, source)
     write_todos(targ, target)
