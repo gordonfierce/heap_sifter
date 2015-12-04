@@ -1,4 +1,10 @@
 # coding: utf-8
+"""
+heapsifter
+~~~~~~~~~~
+
+A cli application for treating text file lists as heaps.
+"""
 from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import division
@@ -10,7 +16,7 @@ from builtins import int
 from builtins import object
 from future import standard_library
 standard_library.install_aliases()
-import random 
+import random
 import heapq
 import functools
 
@@ -29,6 +35,7 @@ def is_heap(passed_list):
 
 
 def insert_todo(todos, text):
+    """Pushes the text passed as a TODO item into a heap of todos."""
     heapq.heappush(todos, TODO(text))
 
 
@@ -48,6 +55,7 @@ def write_todos(todo_list, file_name):
 
 
 def read_todos(todo_file):
+    """Opens a file as a list of TODO objects."""
     try:
         with open(todo_file) as my_file:
             todos = [TODO(todo.strip()) for todo in  my_file if todo != '\n']
@@ -59,13 +67,13 @@ def read_todos(todo_file):
 def alt_read_todos(todo_file):
     return [TODO(todo.strip()) for todo in todo_file if todo != '\n']
 
-    
+
 def alt_write_todos(todo_file, todo_list):
     [print(item.text, file=todo_file) for item in todo_list]
 
 
-@functools.lru_cache(maxsize=None)
 def prioritize_or_equal(item_a, item_b):
+    """Prompts user to compare two items via cli."""
     click.echo("a: {}".format(item_a))
     click.echo("b: {}".format(item_b))
     choice = click.prompt("More important? a/b/(e)qual")
@@ -79,6 +87,7 @@ def prioritize_or_equal(item_a, item_b):
 
 @functools.total_ordering
 class TODO(object):
+    """Represents a list item, adding custom comparison for user-guided sorting."""
     def __init__(self, text):
         self.text = text
 
@@ -125,7 +134,7 @@ def add(todo_file, insertion):
 def heap_it(todo_file):
     todos = read_todos(todo_file)
     heapq.heapify(todos)
-    write_todos(todos, todo_file)  
+    write_todos(todos, todo_file)
 
 
 @cli.command()
