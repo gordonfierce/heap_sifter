@@ -3,3 +3,4 @@ click
 hypothesis
 coverage
 pytest
+future

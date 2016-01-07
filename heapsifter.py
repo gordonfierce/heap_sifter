@@ -131,7 +131,7 @@ def add(todo_file, insertion):
 @click.option('--todo_file', default='todo.txt',
               help='The file to heap.',
               type=click.Path())
-def heap_it(todo_file):
+def heap(todo_file):
     todos = read_todos(todo_file)
     heapq.heapify(todos)
     write_todos(todos, todo_file)
@@ -174,7 +174,7 @@ def multi_delete(todo_list, indexes):
 @click.option('--todo_file', default='todo.txt',
               help='The todo file to review.',
               type=click.Path())
-def batch_remove(todo_file):
+def remove(todo_file):
     todos = read_todos(todo_file)
     click.echo("Todos:")
     for item_tuple in enumerate(todos):
@@ -206,7 +206,7 @@ def head(todo_file, number):
     [click.echo(todos[n]) for n in range(number)]
 
 
-@click.command()
+@cli.command()
 @click.option('--source', type=click.Path())
 @click.option('--target', type=click.Path())
 def combine(source, target):
@@ -217,7 +217,7 @@ def combine(source, target):
     write_todos(src, source)
 
 
-@click.command()
+@cli.command()
 @click.option('--source', type=click.Path())
 @click.option('--target', type=click.Path())
 def sift_one(source, target):
