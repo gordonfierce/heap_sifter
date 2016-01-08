@@ -142,6 +142,8 @@ def heap(todo_file):
               help='The todo file to review.',
               type=click.Path())
 def pop(todo_file):
+    """Display top item in list and optionally remove or repush it.
+    """
     todos = read_todos(todo_file)
     if len(todos) == 0:
         click.echo("No todos!")
