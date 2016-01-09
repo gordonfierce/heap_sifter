@@ -223,6 +223,7 @@ def combine(source, target):
 @click.option('--source', type=click.Path())
 @click.option('--target', type=click.Path())
 def sift_one(source, target):
+    """Pull one item out of a list and insert it into a heap."""
     src = read_todos(source)
     targ = read_todos(target)
     item = heapq.heappop(src)
