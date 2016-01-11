@@ -64,14 +64,6 @@ def read_todos(todo_file):
         return []
 
 
-def alt_read_todos(todo_file):
-    return [TODO(todo.strip()) for todo in todo_file if todo != '\n']
-
-
-def alt_write_todos(todo_file, todo_list):
-    [print(item.text, file=todo_file) for item in todo_list]
-
-
 def prioritize_or_equal(item_a, item_b):
     """Prompts user to compare two items via cli."""
     click.echo("a: {}".format(item_a))
@@ -122,6 +114,7 @@ def cli():
               help='The text file destination.',
               type=click.Path())
 def add(todo_file, insertion):
+    """Add a todo item to a file. """
     todos = read_todos(todo_file)
     insert_todo(todos, insertion)
     write_todos(todos, todo_file)
@@ -132,6 +125,7 @@ def add(todo_file, insertion):
               help='The file to heap.',
               type=click.Path())
 def heap(todo_file):
+    """Heapify an unsorted list of items."""
     todos = read_todos(todo_file)
     heapq.heapify(todos)
     write_todos(todos, todo_file)
