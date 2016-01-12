@@ -198,6 +198,7 @@ def remove(todo_file):
               help='Number of todos to show.',
               type=click.INT)
 def head(todo_file, number):
+    """Get the n (default 5) top items in the heap."""
     todos = read_todos(todo_file)
     [click.echo(todos[n]) for n in range(number)]
 
@@ -206,6 +207,7 @@ def head(todo_file, number):
 @click.option('--source', type=click.Path())
 @click.option('--target', type=click.Path())
 def combine(source, target):
+    """Add all of source heap's items to target."""
     src = read_todos(source)
     targ = read_todos(target)
     for item in src:
