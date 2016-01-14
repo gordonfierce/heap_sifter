@@ -223,7 +223,7 @@ def sift_one(source, target):
     src = read_todos(source)
     targ = read_todos(target)
     item = heapq.heappop(src)
-    insert_todo(targ, item)
+    heapq.heappush(targ, item)
     write_todos(src, source)
     write_todos(targ, target)
 
