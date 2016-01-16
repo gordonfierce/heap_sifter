@@ -57,6 +57,9 @@ def test_sift_one():
         heapsifter.TODO = dummy_todo
         runner.invoke(heapsifter.sift_one, ["--source", "second.txt", "--target", "first.txt"]) 
         # Actually read the items and check is_heap
+        first = heapsifter.read_todos('first.txt')
+        second = heapsifter.read_todos('second.txt')
+        assert "Add stuff." in first 
 
 class dummy_todo(TODO):
     """This class is easily sorted because it always compares
