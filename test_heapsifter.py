@@ -42,6 +42,8 @@ def test_is_heap():
     sorted_heap = sorted(not_heap)
     assert is_heap(sorted_heap)
 
+def test_heap():
+    pass
 
 def test_sift_one():
     runner = CliRunner()
