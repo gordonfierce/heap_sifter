@@ -33,7 +33,7 @@ If you want to see your five most important todo items, run
 
 If you want to remove multiple items from your todo list and maintain the heap invariant, run 
 
-`$ heapsifter batch_remove`
+`$ heapsifter remove`
 
 If you want to view, mark done, or repush your top item, run
 
