@@ -41,8 +41,11 @@ If you want to view, mark done, or repush your top item, run
 
 To sift the most important item from one heap into another:
 
-`$ heapsifter sift_one`
+`$ heapsifter sift_one --source source.txt --target target.txt`
 
+To combine two heaps into one:
+
+`$ heapsifter combine --source source.txt --target target.txt`
 ## TODO
 
 Allow for sorting things by time commitment and priority. Add dependencies.
