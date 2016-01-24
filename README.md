@@ -39,6 +39,10 @@ If you want to view, mark done, or repush your top item, run
 
 `$ heapsifter pop`
 
+To sift the most important item from one heap into another:
+
+`$ heapsifter sift_one`
+
 ## TODO
 
 Allow for sorting things by time commitment and priority. Add dependencies.
