@@ -228,5 +228,34 @@ def sift_one(source, target):
     write_todos(targ, target)
 
 
+@cli.command()
+@click.option('--source', type=click.Path())
+@click.option('--out', type=click.Path())
+def triage(source, out):
+    """Given a source file, split out selected items from the heap and put them into a new
+    or existing heap.
+    """
+    src = read_todos(source)
+    replace_list = []
+    new = []
+    click.echo("[K]eep or [s]ift: ")
+    for item in enumerate(src):
+        choice = click.prompt(item[1].text)
+        if choice == "s":
+            replace_list.append(item[0])
+    click.echo(replace_list)
+    for index in replace_list:
+        heapq.heappush(new, src[index])
+    for index in reversed(replace_list):
+        last = src.pop()
+        src[index] = last
+        heapq._siftup(src, index)
+    write_todos(src, source)
+    write_todos(new, out)
+
+
+
+
+
 if __name__ == '__main__':
     cli()
