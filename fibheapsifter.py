@@ -18,6 +18,9 @@ class FibHeap(object):
         def __lt__(self, other):
             return self.item < other.item
 
+        def __gt__(self, other):
+            return self.item > other.item
+
         def __repr__(self):
             return self.item.__repr__()
         
@@ -35,8 +38,9 @@ class FibHeap(object):
             self.minimum = new_item
         else:
             if new_item < self.minimum:
-                self.minumum = new_item
+                self.minimum = new_item
 
+                
     def extract_minimum(self):
         item = self.minimum.item
         self.delete_min()
@@ -57,7 +61,7 @@ class FibHeap(object):
             order = x_node.order
             while possible_orders_array[order] != None:
                 y_node = possible_orders_array[order]
-                if x_node > y_node:
+                if  y_node < x_node:
                     x_node, y_node = y_node, x_node
                 self.root_combine(x_node, y_node)
                 possible_orders_array[order] = None
