@@ -46,8 +46,8 @@ class FibHeap(object):
         self.delete_min()
         self.total_nodes -= 1
         if self.root_list:
-            self.minimum = min(self.root_list)
             self.consolidate()
+            self.minimum = min(self.root_list)
         else:
             self.minimum = None
         return item
